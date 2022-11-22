@@ -3,6 +3,9 @@ site_name: Documentation
 
 theme:
     name: 'material'
+    locale: en
+    highlightjs: true
+    
     palette:
 
     # Light mode
@@ -26,6 +29,7 @@ theme:
 # Extensions
 markdown_extensions:
   - pymdownx.highlight:
+      #anchor_linenums: true
       use_pygments: false
   - pymdownx.inlinehilite
   - pymdownx.snippets

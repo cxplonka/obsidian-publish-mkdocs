@@ -27,9 +27,9 @@ theme:
 
 # Extensions
 markdown_extensions:
-  #- pymdownx.highlight:
+  - pymdownx.highlight:
   #    anchor_linenums: true
-  #    use_pygments: false # pyments not work with mermaid
+      use_pygments: false # pyments not work with mermaid
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences

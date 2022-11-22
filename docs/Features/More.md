@@ -41,12 +41,16 @@ $$\begin{vmatrix}a & b\\
 c & d
 \end{vmatrix}=ad-bc$$
 
-## SQL
+## Code
+
+### SQL
 
 ```sql
 ALTER TABLE VEHICLEMOVEMENT DROP COLUMN GROSSWEIGHT;  
 ALTER TABLE vehiclemovement ADD grossweight GENERATED ALWAYS AS (ZedasAdmin.calcGrossWeight(tareweight,grossweightcargo));
 ```
+
+### Java
 
 ```java
 public static void main(String[] arg) {

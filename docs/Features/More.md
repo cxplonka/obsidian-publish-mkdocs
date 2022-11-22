@@ -1,10 +1,17 @@
 ## Footnotes
 
-Here's a simple footnote [^1]
+Here's a ***simple*** footnote [^1]
 
 [^1]: meaningful!
 
 ## Note
+
+---
+**NOTE**
+
+It works with almost all markdown flavours (the below blank line matters).
+
+---
 
 > [!NOTE]
 > This is how notes are work!

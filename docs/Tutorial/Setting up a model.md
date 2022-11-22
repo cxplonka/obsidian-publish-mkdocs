@@ -40,6 +40,14 @@ Working sections are always parallel ([Fig. 2.4](#figure-section_geometry)).
 
 **IGMAS+** calculates gravity effect either for a flat or a spherically curved model. The latter is required for very extensive model domains. To get an impression of the Earth surface "depression" of a spherical model compared to a flat one, note the following numbers:
 
+| Distance [km] | Depression [m] |
+|---------------|----------------|
+| 10            | 7.85           |
+| 50            | 196            |
+| 100           | 784            |
+| 200           | ~3000          |
+| 250           | ~5000          |
+
 In addition, it should be considered that in a spherical model the calculation of the direction of the vertical component changes continuously according to the curvature of the Earth because it always points to the centre of the Earth. Thereby, a spherical model assumes that the Earth is approximated by a sphere; an elliptical shape cannot yet be realized (but this is negligible for many lithosphere modelling applications). Test calculations have shown that for a model extending by, e.g., $2000 \times 2000$ km$^2$ and reaching a depth of $200$ km, there is a difference in calculated gravity between a spherical and flat modelling approach of about $20--25\times 10^{-5}~~$m/s$^2~~$($20--25$ mGal) .
 
 Depending on the user’s objectives and the characteristics of gravity/magnetics independent information at hand, there are basically three different ways of building up an initial 3D density model ready to be analysed in terms of its gravity/magnetics effects:
@@ -80,6 +88,14 @@ Concerning the **density value** assigned to each model body, it does not matter
 The observed and calculated gravity fields are defined at the stations, each being defined by its $XYZ$ coordinates. The station height ($Z$) refers to its elevation with respect to the geoid, in case of elliptical coordinates -- also to the ellipsoid. It either represents the vertical position of the original gravimeter measurement (daylight surface for terrestrial data, height above the sea level for ship data, flight height for airborne and satellite data, etc.) or a reference level to which the acquired remote data have been continued (see [chapter 4](/igmas/igmas-pages/-/tree/devel/content/tutorial/4_fitting_gravity) and [Fig. 4.1](/igmas/igmas-pages/-/tree/devel/content/tutorial/4_fitting_gravity#figure-cba_simple), [Fig. 4.2](/igmas/igmas-pages/-/tree/devel/content/tutorial/4_fitting_gravity#figure-fa_simple) and [Fig. 4.3](/igmas/igmas-pages/-/tree/devel/content/tutorial/4_fitting_gravity#figure-fa_difficult)). The only condition that must be met for the height of all stations is that they must be located above all model masses. It has its meaning for modelling exclusively when using Free Air anomalies.
 
 _Practical experience and examples for heights_ of the user-defined reference level ([Fig. 4.1](/igmas/igmas-pages/-/tree/devel/content/tutorial/4_fitting_gravity#figure-cba_simple), [Fig. 4.2](/igmas/igmas-pages/-/tree/devel/content/tutorial/4_fitting_gravity#figure-fa_simple) and [Fig. 4.3](/igmas/igmas-pages/-/tree/devel/content/tutorial/4_fitting_gravity#figure-fa_difficult)) can be found here:
+
+| Mountain range                                                    | Top mountain                        | Minimum height<br />of the reference level&#160;(m)     |
+|-------------------------------------------------------------------|-------------------------------------|----------------------------------------------------------|
+| European&#160;Mittelgebirge <br />(low&#160;mountain&#160;ranges) | Brocken (Germany)                   | 1500                                                     |
+| Eastern Alps                                                      | Großglockner&#160;(Austria)         | 5000                                                     |
+| Western Alps                                                      | Mont&#160;Blanc&#160;(Italy/France) | 6000                                                     |
+| Andes                                                             | Aconcagua&#160;(Argentina)          | 7000                                                     |
+| Himalayas                                                         | Everest&#160;(Nepal/China)          | 8000                                                     |
 
 Note that to avoid numerical/theoretical problems (namely, local outliers in the calculated gravity), the stations should neither be located inside a model body nor precisely on its edges or surfaces (hence, check the $Z$ values with respect to the top of the uppermost model body). In case of doubt, add $13$ cm to the height of the body surface -- the height of the gravimeter measuring system (see [Fig. 4.2](/igmas/igmas-pages/-/tree/devel/content/tutorial/4_fitting_gravity#figure-fa_simple)).
 

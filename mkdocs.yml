@@ -5,6 +5,9 @@ theme:
     name: 'material'
     locale: en
     
+    features: # https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-suggestions
+    - search.highlight
+    
     palette:
 
     # Light mode
@@ -53,6 +56,7 @@ markdown_extensions:
       permalink: true
 
 plugins:
+  - tags
   - search:
       indexing: 'full'
   - roamlinks

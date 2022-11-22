@@ -1,3 +1,9 @@
+## Footnotes
+
+Here's a simple footnote [^1]
+
+[^1]: meaningful!
+
 ## Note
 
 > [!NOTE]

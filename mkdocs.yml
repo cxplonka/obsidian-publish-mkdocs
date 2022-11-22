@@ -4,7 +4,6 @@ site_name: Documentation
 theme:
     name: 'material'
     locale: en
-    highlightjs: true
     
     palette:
 
@@ -29,8 +28,8 @@ theme:
 # Extensions
 markdown_extensions:
   - pymdownx.highlight:
-      #anchor_linenums: true
-      use_pygments: false
+      anchor_linenums: true
+      # use_pygments: false # pyments not work with mermaid
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences

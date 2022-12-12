@@ -61,6 +61,8 @@ plugins:
       indexing: 'full'
   - roamlinks
   - mermaid2
+  - git-revision-date-localized
+  - mkdocs-git-committers-plugin
 
 extra_javascript:
   - javascripts/mathjax.js

@@ -62,7 +62,8 @@ plugins:
   - roamlinks
   - mermaid2
   - git-revision-date-localized
-  - mkdocs-git-committers-plugin
+  - git-authors
+  - git-committers
 
 extra_javascript:
   - javascripts/mathjax.js

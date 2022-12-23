@@ -1,0 +1,691 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>Setting up a model - Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#21-model-bodies" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Documentation" class="md-header__button md-logo" aria-label="Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Setting up a model
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="pink" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Documentation" class="md-nav__button md-logo" aria-label="Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Notes
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Features
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Features" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Features
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features/LaTeX%20Math%20Support/" class="md-nav__link">
+        LaTeX Math Support
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features/Mermaid%20Diagrams/" class="md-nav__link">
+        Mermaid diagrams
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features/More/" class="md-nav__link">
+        More
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features/Text%20Formatting/" class="md-nav__link">
+        Text Formatting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Tutorial
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorial" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorial
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Setting up a model
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Setting up a model
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-model-bodies" class="md-nav__link">
+    2.1 Model bodies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-model-densities" class="md-nav__link">
+    2.2 Model densities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-model-stations" class="md-nav__link">
+    2.3 Model stations
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-model-bodies" class="md-nav__link">
+    2.1 Model bodies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-model-densities" class="md-nav__link">
+    2.2 Model densities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-model-stations" class="md-nav__link">
+    2.3 Model stations
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+  <h1>Setting up a model</h1>
+
+<p>For the modeller, each compilation of a density/susceptibility model always consists of two activities that result from a theoretical approach: a <strong>body</strong> must be defined which contains a mass/magnetic material (here density and/or susceptibility), and the distances from stations where the gravity and/or magnetic fields were measured. Therefore, model stations must be defined (see below).</p>
+<p>At first, the origin point of the model (its zero point) has to be fixed, which is not only the origin of model geometry, but also of model stations, of the corresponding gravity/magnetic fields which should be matched, of the voxel cube and of any available additional map information, for example from a geographical and/or a digitized geological map.</p>
+<p>We start with the explanation on how to handle the bodies and continue with the explanation for stations.</p>
+<p>Please use the <a href="../Introduction/">Introduction</a></p>
+<hr />
+<h3 id="21-model-bodies"><a href="#21-model-bodies"></a>2.1 Model bodies<a class="headerlink" href="#21-model-bodies" title="Permanent link">&para;</a></h3>
+<p>In <strong>IGMAS+</strong>, density in space can be defined either in terms of</p>
+<ol>
+<li>triangulated polyhedra surrounding a certain volume of constant density (<a href="#figure-two_polyhedra_model">Fig. 2.1</a>) or</li>
+<li>a 3D <strong>voxel cube</strong> (<a href="#figure-voxel_model">Fig. 2.2</a>) containing numerous voxels, each carrying its own density value.</li>
+</ol>
+<p>{{&lt; figure library="true" src="two_polyhedra_model.png" lightbox="true" title="<strong>FIGURE 2.1:</strong> A model with two polyhedra of constant densities (pink and red)." numbered="false" id="two_polyhedra_model" &gt;}}</p>
+<p>{{&lt; figure library="true" src="voxel_model.png" lightbox="true" title="<strong>FIGURE 2.2:</strong> A voxel model defining sedimentary density structures." numbered="false" id="voxel_model" &gt;}}</p>
+<p>All polyhedra with the same density definition make up a model <strong>body</strong> (Body Manager), while a single model body may be divided into several geometrically separated polyhedra (called "<strong>indexed body parts</strong>"). The hull of a polyhedron is composed of interfaces. The geometry of each interface is defined by vertices.</p>
+<p>The user-defined positioning of these <strong>vertices</strong> is crucial for the triangulation process by which <strong>IGMAS+</strong> geometrically approximates the 3D density structure. The obtained model topology is defined based on the position of such vertices on pre-defined, parallel oriented, vertical planes (vertical <strong>working sections</strong>) (<a href="#figure-model_construction">Fig. 2.3</a>).</p>
+<p>{{&lt; figure library="true" src="model_construction.png" lightbox="true" title="<strong>FIGURE 2.3:</strong> Illustration of basic terms for <strong>IGMAS+</strong> model construction: vertices (black points), triangles (black lines), and working sections (vertical planes)." numbered="false" id="model_construction" &gt;}}</p>
+<p>These working sections are the virtual scenes for implementing any interactive modifications of model geometries, for example, by <strong>adding</strong>, <strong>deleting</strong>, or <strong>moving vertices</strong>.</p>
+<p>In case the model is built on <strong>working sections</strong> (<a href="#figure-model_construction">Fig. 2.3</a>), there are no vertices located between the working sections. The user therefore should define the number, spacing and horizontal orientation (strike direction) of these working sections</p>
+<ol>
+<li>to keep sufficient control of model geometries throughout the interactive modelling process and</li>
+<li>to allow for a proper analysis of elongated gravity anomalies (i.e., orient working sections perpendicular to the strike of major anomalies).</li>
+</ol>
+<p>Working sections are always parallel (<a href="#figure-section_geometry">Fig. 2.4</a>).</p>
+<p>{{&lt; figure library="true" src="section_geometry.png" lightbox="true" title="<strong>FIGURE 2.4:</strong> Four steps that are important when defining the geometry of the model bodies by “sections”. (a) Decide which anomalies should be modelled. (b) Select the area to be modelled. (c) Mark the sections on the area to be modelled and define the intersections of the sections with the anomaly. (d) Consider which of the sections and the intersections are really important to model the anomaly correctly." numbered="false" id="section_geometry" &gt;}}</p>
+<p>{{% callout note %}} <strong>Remember:</strong> The simpler the model - the better it is. {{% /callout %}}</p>
+<p><strong>IGMAS+</strong> calculates gravity effect either for a flat or a spherically curved model. The latter is required for very extensive model domains. To get an impression of the Earth surface "depression" of a spherical model compared to a flat one, note the following numbers:</p>
+<table>
+<thead>
+<tr>
+<th>Distance [km]</th>
+<th>Depression [m]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10            </td>
+<td>7.85          </td>
+</tr>
+<tr>
+<td>50            </td>
+<td>196            </td>
+</tr>
+<tr>
+<td>100          </td>
+<td>784            </td>
+</tr>
+<tr>
+<td>200          </td>
+<td>~3000          </td>
+</tr>
+<tr>
+<td>250          </td>
+<td>~5000          </td>
+</tr>
+</tbody>
+</table>
+<p>In addition, it should be considered that in a spherical model the calculation of the direction of the vertical component changes continuously according to the curvature of the Earth because it always points to the centre of the Earth. Thereby, a spherical model assumes that the Earth is approximated by a sphere; an elliptical shape cannot yet be realized (but this is negligible for many lithosphere modelling applications). Test calculations have shown that for a model extending by, e.g., <span class="arithmatex">\(2000 \times 2000\)</span> km<span class="arithmatex">\(^2\)</span> and reaching a depth of <span class="arithmatex">\(200\)</span> km, there is a difference in calculated gravity between a spherical and flat modelling approach of about <span class="arithmatex">\(20--25\times 10^{-5}~~\)</span>m/s<span class="arithmatex">\(^2~~\)</span>(<span class="arithmatex">\(20--25\)</span> mGal) .</p>
+<p>Depending on the user’s objectives and the characteristics of gravity/magnetics independent information at hand, there are basically three different ways of building up an initial 3D density model ready to be analysed in terms of its gravity/magnetics effects:</p>
+<ul>
+<li>a) “Defining sections” approach: define working sections before loading or creating model vertices.</li>
+<li>b) “Loading layers/interfaces/horizons” approach: load point sets forming body interfaces before defining working sections.</li>
+<li>c) “Loading a voxel cube” after defining the model space according to (a) or (b)</li>
+</ul>
+<p>When selecting the <strong>“sections” approach (a)</strong>, the user builds the model from scratch by first defining the 3D model extent and the vertical (working) sections and then loading or creating vertices to construct interfaces that separate bodies of different density. Any gravity-independent data which are loaded into the obtained model space to help constructing the density bodies (e.g., bitmaps, point sets) can be projected and visualised on the vertical sections. In this case, the sections should be appropriately positioned to keep the projection-related distortions of observed structures small. Since all vertical sections need to be parallel, it might not be possible to represent all available structural information ideally in the model domain. Hence, option (a) suits well to solve generic problems independent of correctly georeferenced structures. Additionally, the approach may be selected if the spatial coverage of gravity-independent structural input data (e.g. seismic profiles, boreholes) is very limited with respect to a larger number of observed gravity anomalies. For example, the interpreted structure of a single 2D seismic section could thus be continued laterally by inferring a variety of consistent 3D models from the observed gravity field. Thereby, one would strategically start with a simple density configuration and increase the model extent and complexity stepwise.</p>
+<p>If the spatial coverage of structural input data is dense enough and the depth/thickness configuration of several density bodies can be derived directly and modelled outside of <strong>IGMAS+</strong>, then the <strong>“layer” approach (b)</strong> offers the proper functionality. In this case, the user can load continuous <strong>interfaces</strong> or <strong>horizons</strong> -- sets of regularly or irregularly spaced points with XYZ coordinates. Each horizon defines the top of a spatial domain that -- according to gravity-/magnetics-independent observations -- has been identified as a potential contrast in density with respect to adjacent domains. The loaded interfaces/horizons are stacked by IGMAS+ and collectively define the default 3D model extent (to be changed optionally), while the working sections are defined only after this stage. As part of the model building process, <strong>IGMAS+</strong> interpolates between the loaded XYZ points of a horizon, derives the intersections of the horizon with the working sections and accordingly creates a number of vertices positioned on the latter. Hence, the initially loaded point sets are not identical with the final vertices representing a horizon! Care should be taken that the <strong>horizons</strong>/<strong>layers</strong>/<strong>interfaces</strong> do not intersect each other (corresponding to a negative thickness of the respective layer in between).</p>
+<p>Generally speaking, there are no specific suggestions for the use of case (a) or (b). Recently, there has been some preference for the use of case (b), since many modelers prefer to work with predefined layers from open databases (for example <a href="https://meetingorganizer.copernicus.org/EGU2012/EGU2012-3743-1.pdf">CRUST1.0</a>, <a href="https://doi.org/10.1002/2013JB010626">LITHO1.0</a>, <a href="http://dx.doi.org/10.7289/V5C8276M">ETOPO1</a> and many others). Layers cannot be eliminated from the model afterwards. But you can assign the same density to the horizon as to its neighbouring horizons, to the side of it, above it or below it. Then it has no more gravity effect on the model stations.</p>
+<p>After setting up a model either following approach a) or b), one or several model bodies may be selected for <strong>“voxelization” approach (c)</strong>, i.e., for being differentiated into numerous voxels, each carrying its own density value. In this way, smaller-scale density variations derived from independent observations (e.g., seismic, mineralogical-petrological) can be superimposed on the geological structure and considered for the gravity calculation. Each voxel is associated with an effective density representing the sum of:</p>
+<ol>
+<li>a constant body density and</li>
+<li>a voxel density.</li>
+</ol>
+<p>One way of defining the voxel density is to first create a voxel grid and then apply a certain function to implement physical laws or empirical concepts such as seismic-velocity-to-density conversions or depth-controlled porosity-density functions. Alternatively, the voxel cube may be defined completely by data import including both the coordinates and density values of the voxels. Additional <strong>IGMAS+</strong> functionality related to voxel cubes is provided in terms of:</p>
+<ol>
+<li>multiplication of the voxel density with a voxel factor for fast model modifications,</li>
+<li>automatic edge effect minimization and</li>
+<li>transformation of voxel-related density variations into triangulated isosurfaces.</li>
+</ol>
+<p>Note that currently only one voxel cube can be applied to an <strong>IGMAS+</strong> model.</p>
+<hr />
+<h3 id="22-model-densities"><a href="#22-model-densities"></a>2.2 Model densities<a class="headerlink" href="#22-model-densities" title="Permanent link">&para;</a></h3>
+<p>Concerning the <strong>density value</strong> assigned to each model body, it does not matter if absolute or relative density values are chosen, since the resulting gravity effect only depends on the density differences at modelled interfaces and the distances from stations. This implies that gravity modelling alone cannot determine absolute values of densities. For a deeper understanding of these statements, a more detailed description of the basic mathematical-physical formulas for the calculation of the gravity effect in <strong>IGMAS+</strong> would be beneficial. However, this would go beyond the scope of this tutorial. Therefore, the original publications by <a href="/igmas/igmas-pages/-/tree/devel/content/publication/goetze-1988">Götze and Lahmeyer (1988)</a> or by <a href="/igmas/igmas-pages/-/tree/devel/content/publication/goetze-2014">Götze (2014)</a> are recommended.</p>
+<hr />
+<h3 id="23-model-stations"><a href="#23-model-stations"></a>2.3 Model stations<a class="headerlink" href="#23-model-stations" title="Permanent link">&para;</a></h3>
+<p>The observed and calculated gravity fields are defined at the stations, each being defined by its <span class="arithmatex">\(XYZ\)</span> coordinates. The station height (<span class="arithmatex">\(Z\)</span>) refers to its elevation with respect to the geoid, in case of elliptical coordinates -- also to the ellipsoid. It either represents the vertical position of the original gravimeter measurement (daylight surface for terrestrial data, height above the sea level for ship data, flight height for airborne and satellite data, etc.) or a reference level to which the acquired remote data have been continued (see <a href="/igmas/igmas-pages/-/tree/devel/content/tutorial/4_fitting_gravity">chapter 4</a> and <a href="/igmas/igmas-pages/-/tree/devel/content/tutorial/4_fitting_gravity#figure-cba_simple">Fig. 4.1</a>, <a href="/igmas/igmas-pages/-/tree/devel/content/tutorial/4_fitting_gravity#figure-fa_simple">Fig. 4.2</a> and <a href="/igmas/igmas-pages/-/tree/devel/content/tutorial/4_fitting_gravity#figure-fa_difficult">Fig. 4.3</a>). The only condition that must be met for the height of all stations is that they must be located above all model masses. It has its meaning for modelling exclusively when using Free Air anomalies.</p>
+<p><em>Practical experience and examples for heights</em> of the user-defined reference level (<a href="/igmas/igmas-pages/-/tree/devel/content/tutorial/4_fitting_gravity#figure-cba_simple">Fig. 4.1</a>, <a href="/igmas/igmas-pages/-/tree/devel/content/tutorial/4_fitting_gravity#figure-fa_simple">Fig. 4.2</a> and <a href="/igmas/igmas-pages/-/tree/devel/content/tutorial/4_fitting_gravity#figure-fa_difficult">Fig. 4.3</a>) can be found here:</p>
+<table>
+<thead>
+<tr>
+<th>Mountain range                                                    </th>
+<th>Top mountain                        </th>
+<th>Minimum height<br />of the reference level&#160;(m)    </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>European&#160;Mittelgebirge <br />(low&#160;mountain&#160;ranges)</td>
+<td>Brocken (Germany)                  </td>
+<td>1500                                                    </td>
+</tr>
+<tr>
+<td>Eastern Alps                                                      </td>
+<td>Großglockner&#160;(Austria)        </td>
+<td>5000                                                    </td>
+</tr>
+<tr>
+<td>Western Alps                                                      </td>
+<td>Mont&#160;Blanc&#160;(Italy/France)</td>
+<td>6000                                                    </td>
+</tr>
+<tr>
+<td>Andes                                                            </td>
+<td>Aconcagua&#160;(Argentina)          </td>
+<td>7000                                                    </td>
+</tr>
+<tr>
+<td>Himalayas                                                        </td>
+<td>Everest&#160;(Nepal/China)          </td>
+<td>8000                                                    </td>
+</tr>
+</tbody>
+</table>
+<p>Note that to avoid numerical/theoretical problems (namely, local outliers in the calculated gravity), the stations should neither be located inside a model body nor precisely on its edges or surfaces (hence, check the <span class="arithmatex">\(Z\)</span> values with respect to the top of the uppermost model body). In case of doubt, add <span class="arithmatex">\(13\)</span> cm to the height of the body surface -- the height of the gravimeter measuring system (see <a href="/igmas/igmas-pages/-/tree/devel/content/tutorial/4_fitting_gravity#figure-fa_simple">Fig. 4.2</a>).</p>
+<p>The spatial coverage and spacing of the stations (i.e. their <span class="arithmatex">\(XY\)</span> coordinates), together with the wavelengths of the associated observed anomalies, provide limits to the scales and resolution of subsurface density heterogeneities that can be derived -- an important aspect when planning a gravity modelling project (<a href="#figure-section_geometry">Fig. 2.4(b,c,d)</a>). In the context of resolution, <strong>IGMAS+</strong> allows gravity calculations for a large number of stations -- but user should keep in mind the memory size limit (refer to the {{% staticref "files/IGMAS_User_Manual.pdf" %}}<strong>IGMAS+ User Manual</strong>{{% /staticref %}}, chapter 2.1.2).</p>
+<p>In general, there are two different types of station data that <strong>IGMAS+</strong> users may use: irregularly or regularly spaced data. When working with original irregularly spaced measurements (i.e. scattered and clustered <span class="arithmatex">\(XY\)</span> station coordinates), the observed and the modelled gravity have the same relative position with respect to the causative density bodies. If one chooses to interpret anomalies that have been transferred to a regular grid (e.g., by use of ICGEM data sets, <a href="/igmas/igmas-pages/-/tree/devel/content/tutorial/4_fitting_gravity#46-remarks-on-the-use-of-icgem-gravity-datasets">chapter 4.6</a>, or other grids), however, one accepts that the model bodies have a smaller effect with respect to the stations than the real bodies due to interpolation procedures. Hence, it is generally recommended to use irregularly distributed stations instead of gridded gravity data.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../Introduction/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Introduction
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.highlight", "search.suggest", "search.share"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+    
+  </body>
+</html>

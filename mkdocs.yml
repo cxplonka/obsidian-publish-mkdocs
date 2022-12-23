@@ -33,11 +33,10 @@ theme:
 # Extensions
 markdown_extensions:
   - pymdownx.highlight:
-      anchor_linenums: true
-  #    use_pygments: false # pyments not work with mermaid
+  #    anchor_linenums: true
+      use_pygments: false # pyments not work with mermaid
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
   - footnotes
   # - attr_list
   - pymdownx.arithmatex:
